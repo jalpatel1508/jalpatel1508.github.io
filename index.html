@@ -1,2 +1,1379 @@
-<h1>Hi, I'm Jal</h1>
-<p>Welcome to my website.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Physics — Easy Notes + Definitions (Unit 1–4)</title>
+<style>
+  :root{
+    --bg:#f4f7fb; --card:#ffffff; --ink:#1e2a38; --muted:#5a6b7d;
+    --brand:#1f6feb; --brand2:#0b3d91; --accent:#ff8c42;
+    --green:#0f9d58; --yellow:#fff4d6; --line:#e2e9f2;
+    --def:#e8f1ff; --defborder:#1f6feb;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;}
+  header{background:linear-gradient(135deg,#0b3d91,#1f6feb 60%,#3b9dff);
+    color:#fff;padding:34px 20px 26px;text-align:center;}
+  header h1{margin:0 0 6px;font-size:clamp(22px,4vw,34px);letter-spacing:.3px;}
+  header p{margin:0;opacity:.92;font-size:15px;}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);padding:4px 12px;border-radius:999px;
+    font-size:12.5px;margin-top:12px;}
+
+  nav{position:sticky;top:0;z-index:50;background:#fff;
+    border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto;
+    padding:10px 14px;box-shadow:0 2px 10px rgba(15,40,80,.05);}
+  nav button{flex:0 0 auto;border:1px solid var(--line);background:#f8fafd;
+    color:var(--muted);padding:8px 16px;border-radius:999px;font-size:14px;
+    font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap;}
+  nav button:hover{background:#eef4ff;color:var(--brand);}
+  nav button.active{background:var(--brand);color:#fff;border-color:var(--brand);
+    box-shadow:0 4px 12px rgba(31,111,235,.3);}
+
+  main{max-width:960px;margin:0 auto;padding:24px 16px 70px;}
+  section{display:none;animation:fade .35s ease;}
+  section.show{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+  h2.unit-title{font-size:clamp(20px,3.4vw,27px);color:var(--brand2);
+    margin:8px 0 4px;padding-bottom:10px;border-bottom:3px solid var(--brand);
+    display:inline-block;}
+  .unit-sub{color:var(--muted);font-size:14px;margin:0 0 22px;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:20px 22px;margin-bottom:18px;box-shadow:0 3px 14px rgba(20,50,90,.05);}
+  .card h3{margin:0 0 12px;font-size:18.5px;color:var(--brand2);
+    display:flex;align-items:center;gap:9px;}
+  .card h3 .ico{background:#eaf1ff;color:var(--brand);width:30px;height:30px;
+    border-radius:9px;display:grid;place-items:center;font-size:15px;flex:0 0 auto;}
+  .card h4{margin:16px 0 6px;font-size:15.5px;color:#22405f;}
+  ul{margin:8px 0;padding-left:22px;} li{margin:5px 0;} p{margin:8px 0;}
+
+  /* Definition box — highlighted for 1-mark prep */
+  .defbox{background:var(--def);border-left:5px solid var(--defborder);
+    padding:12px 15px;border-radius:10px;margin:10px 0;font-size:14.6px;}
+  .defbox b{color:var(--brand2);}
+  .defbox .word{font-weight:700;color:var(--brand2);}
+
+  .easy{background:#eef8f0;border-left:5px solid var(--green);
+    padding:12px 15px;border-radius:10px;margin:12px 0;font-size:14.6px;}
+  .easy b{color:#0b6b3a;}
+
+  .example{background:var(--yellow);border-left:5px solid var(--accent);
+    padding:12px 15px;border-radius:10px;margin:12px 0;font-size:14.6px;}
+  .example b{color:#b45309;}
+
+  .formula{background:#0b3d91;color:#fff;padding:12px 16px;border-radius:10px;
+    text-align:center;font-size:16.5px;margin:12px 0;letter-spacing:.4px;
+    font-family:"Cambria Math",Georgia,serif;}
+  .formula small{display:block;font-size:12.5px;opacity:.85;margin-top:6px;
+    font-family:inherit;}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;
+    overflow:hidden;border-radius:10px;}
+  th{background:#eaf1ff;color:var(--brand2);text-align:left;padding:10px 12px;
+    font-size:13.5px;}
+  td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top;}
+  tr:nth-child(even) td{background:#fafcff;}
+
+  .pill{display:inline-block;background:#eaf1ff;color:var(--brand2);
+    font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;
+    margin-right:6px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+
+  .mini{background:#f8fbff;border:1px dashed #c8dbf7;border-radius:12px;
+    padding:12px 14px;font-size:14px;}
+  .mini b{color:var(--brand2);}
+
+  .qbox{background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin-bottom:14px;}
+  .qbox .q{font-weight:600;margin-bottom:10px;}
+  .opt{display:block;width:100%;text-align:left;background:#f7faff;
+    border:1px solid var(--line);padding:9px 13px;border-radius:9px;margin:6px 0;
+    cursor:pointer;font-size:14.3px;transition:.15s;font-family:inherit;}
+  .opt:hover{background:#eef4ff;border-color:#bcd4f7;}
+  .opt.correct{background:#e3f8e9;border-color:#69c98d;color:#0b6b3a;font-weight:600;}
+  .opt.wrong{background:#fdeaea;border-color:#f0a6a6;color:#a02020;}
+  .opt:disabled{cursor:default;}
+
+  footer{text-align:center;color:var(--muted);font-size:13px;
+    padding:26px 16px;border-top:1px solid var(--line);background:#fff;}
+
+  .def-title{background:#0b3d91;color:#fff;display:inline-block;
+    padding:2px 10px;border-radius:6px;font-size:12px;font-weight:700;
+    letter-spacing:.5px;margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ Energy Physics — Easy Notes + Definitions</h1>
+  <p>Unit 1 to Unit 4 · Simple words · Every definition for 1-mark questions</p>
+  <div class="badge">Exam Pattern: Q1 Compulsory (8 marks) + Any 3 of 5 (4 marks each) = 20 Marks</div>
+</header>
+
+<nav>
+  <button class="active" data-t="u1">Unit 1 · Intro</button>
+  <button data-t="u2">Unit 2 · Conventional</button>
+  <button data-t="u3">Unit 3 · Solar</button>
+  <button data-t="u4">Unit 4 · Wind & Hydro</button>
+  <button data-t="defs">📖 All Definitions</button>
+  <button data-t="quiz">🎯 MCQs</button>
+</nav>
+
+<main>
+
+<!-- ================= UNIT 1 ================= -->
+<section id="u1" class="show">
+  <h2 class="unit-title">Unit 1 — Introduction to Energy Physics</h2>
+  <p class="unit-sub">Energy forms · Energy flow & conversion · Thermodynamics laws · Entropy · Work, Heat, Power · Sustainable development</p>
+
+  <div class="card">
+    <h3><span class="ico">🔋</span>1. What is Energy?</h3>
+    <div class="defbox">
+      <span class="def-title">DEFINITION</span><br>
+      <span class="word">Energy</span> = the ability or power to do work. It comes from the sun, wind, water, fire, electricity and food.
+    </div>
+    <div class="easy"><b>Easy way:</b> Energy is like money — you can store it, spend it, or change it into another form, but you can never create or destroy it.</div>
+
+    <h4>Two Big Families of Energy</h4>
+    <div class="defbox">
+      <span class="word">Potential Energy</span> = stored energy or energy of position. It is not moving but has the "potential" to do work.
+    </div>
+    <div class="defbox">
+      <span class="word">Kinetic Energy</span> = energy of motion. Anything that moves has kinetic energy.
+    </div>
+    <div class="grid2">
+      <div class="mini"><b>Potential forms:</b><br>
+        • <b>Chemical</b> — stored in bonds (food, coal, petrol)<br>
+        • <b>Nuclear</b> — stored in the nucleus (uranium)<br>
+        • <b>Stored Mechanical</b> — compressed spring, stretched rubber<br>
+        • <b>Gravitational</b> — water in a dam
+      </div>
+      <div class="mini"><b>Kinetic forms:</b><br>
+        • <b>Radiant</b> — sunlight, X-rays<br>
+        • <b>Thermal</b> — heat (vibration of atoms)<br>
+        • <b>Motion</b> — wind, flowing water<br>
+        • <b>Sound</b> — longitudinal waves<br>
+        • <b>Electrical</b> — moving electrons
+      </div>
+    </div>
+    <div class="example"><b>Example:</b> Water stored high in a dam = gravitational potential energy. When it falls, it becomes kinetic energy → spins turbine → electricity.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🔄</span>2. Energy Flow & Energy Conversion</h3>
+    <div class="defbox">
+      <span class="word">Energy Conversion</span> = changing energy from one form to another. Energy is never lost — it just changes form.
+    </div>
+    <table>
+      <tr><th>Primary Source</th><th>Stored Energy Type</th><th>End Use</th></tr>
+      <tr><td>Coal</td><td>Chemical</td><td>Electricity, heat, light</td></tr>
+      <tr><td>Oil</td><td>Chemical</td><td>Electricity, light</td></tr>
+      <tr><td>Natural Gas</td><td>Chemical</td><td>Electricity, light</td></tr>
+      <tr><td>Sun</td><td>Radiant / Solar</td><td>Electricity, light</td></tr>
+      <tr><td>Uranium</td><td>Nuclear</td><td>Electricity, light</td></tr>
+    </table>
+    <h4>Common Conversion Chains</h4>
+    <ul>
+      <li>Coal plant → <b>Chemical → Thermal → Kinetic → Electrical</b></li>
+      <li>Solar cell → <b>Radiant → Electrical</b></li>
+      <li>Electric vehicle → <b>Chemical → Electrical → Mechanical</b></li>
+      <li>Lamp → <b>Chemical → Heat + Light</b></li>
+      <li>Wind mill → <b>Kinetic → Electrical</b></li>
+      <li>Hydro dam → <b>Gravitational → Kinetic → Mechanical → Electrical</b></li>
+    </ul>
+    <div class="easy"><b>Easy way:</b> Every machine is an "energy translator". It takes one form in and gives another out — some always leaks as waste heat.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🌡️</span>3. Laws of Thermodynamics</h3>
+
+    <h4>Zeroth Law — Thermal Equilibrium</h4>
+    <div class="defbox">
+      <span class="word">Zeroth Law:</span> If two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other.
+    </div>
+    <div class="defbox">
+      <span class="word">Thermal Equilibrium:</span> A state where two objects in contact have the same temperature — no heat flows between them.
+    </div>
+    <div class="example"><b>Example:</b> Body (A) touches thermometer (B). Thermometer was calibrated with a standard (C). So body temp = standard temp — that's why thermometer reading is correct.</div>
+
+    <h4>First Law — Conservation of Energy</h4>
+    <div class="defbox">
+      <span class="word">First Law of Thermodynamics:</span> Energy can neither be created nor destroyed. The change in internal energy equals heat added minus work done by the system.
+    </div>
+    <div class="formula">ΔU = Q − W<small>ΔU = change in internal energy · Q = heat added · W = work done by system</small></div>
+    <div class="example"><b>Example:</b> Car engine burns fuel (chemical) → moves car (mechanical) + releases heat. Total energy balances.</div>
+
+    <h4>Second Law — Entropy & Direction of Heat</h4>
+    <div class="defbox">
+      <span class="word">Second Law (Clausius):</span> Heat naturally flows from a hotter body to a colder body, never the other way, unless external work is done.
+    </div>
+    <div class="defbox">
+      <span class="word">Entropy (S):</span> A measure of disorder or randomness in a system. In any natural process, entropy of an isolated system increases or stays the same — it never decreases.
+    </div>
+    <div class="defbox">
+      <span class="word">Irreversible Process:</span> A natural process that moves in one direction only (e.g. heat flowing hot → cold). Increases entropy.
+    </div>
+    <div class="defbox">
+      <span class="word">Reversible Process:</span> An ideal process that can go both ways without increasing entropy (theoretical).
+    </div>
+    <div class="formula">ΔS = ΔQ / T<small>ΔS = 0 for reversible · ΔS &gt; 0 for irreversible</small></div>
+    <div class="easy"><b>Easy way:</b> Hot coffee cools by itself — never heats up by itself. That one-way behaviour is the Second Law.</div>
+
+    <h4>Third Law — Absolute Zero</h4>
+    <div class="defbox">
+      <span class="word">Third Law of Thermodynamics:</span> The entropy of a perfect crystal at absolute zero temperature is zero.
+    </div>
+    <div class="defbox">
+      <span class="word">Absolute Zero:</span> The lowest possible temperature = 0 Kelvin = −273.15 °C. At this point, particles have minimum possible energy.
+    </div>
+    <div class="example"><b>Used in:</b> cryogenics, superconductivity, quantum computing — where materials behave strangely at very low temperature.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">⚙️</span>4. Physics of Work, Heat and Power</h3>
+
+    <h4>Work</h4>
+    <div class="defbox">
+      <span class="word">Work:</span> Work is done when a force moves an object through a distance. In thermodynamics, work is done when a gas expands or contracts.
+    </div>
+    <div class="formula">δW = F·dx = −P·dV<small>Work done by a gas when volume changes</small></div>
+    <p>For a finite volume change: <b>W = −∫P dV</b></p>
+
+    <h4>Heat</h4>
+    <div class="defbox">
+      <span class="word">Heat:</span> Heat is energy transferred between two systems because of a temperature difference. No volume change is needed.
+    </div>
+    <div class="defbox">
+      <span class="word">Heat Capacity (C):</span> The amount of heat needed to raise the temperature of a system by 1 °C (or 1 K).
+    </div>
+    <div class="formula">ΔQ = C ΔT</div>
+    <div class="defbox">
+      <span class="word">Specific Heat (c):</span> Heat capacity per unit mass (or per particle, per mole, per volume). It is an intensive property.
+    </div>
+    <p><b>Units:</b> 1 cal = 4.184 J</p>
+    <p><b>Thermodynamic processes:</b> Isothermal (T const), Isobaric (P const), Isochoric (V const), Adiabatic (ΔQ = 0).</p>
+
+    <h4>Power</h4>
+    <div class="defbox">
+      <span class="word">Power:</span> The rate at which work is done or energy is transferred. Unit = watt (W).
+    </div>
+    <div class="formula">P = W / t<small>Power = Work ÷ Time</small></div>
+    <div class="example"><b>Example:</b> Lifting a 10 kg object 2 m in 5 s → P = (10 × 9.8 × 2) / 5 = <b>39.2 W</b></div>
+
+    <h4>Efficiency</h4>
+    <div class="defbox">
+      <span class="word">Energy Conversion Efficiency (η):</span> The ratio of useful work output to total energy input.
+    </div>
+    <div class="formula">η = Work done / Energy used</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🌍</span>5. Role of Energy Physics in Technology & Sustainable Development</h3>
+    <ul>
+      <li><b>Thermodynamics</b> → efficient engines & turbines</li>
+      <li><b>Quantum Physics</b> → solar cells, semiconductors, LEDs</li>
+      <li><b>Nuclear Physics</b> → power generation & medical tech</li>
+      <li><b>Electromagnetism</b> → power transmission, wireless tech, EVs</li>
+    </ul>
+    <h4>Renewables & Physics</h4>
+    <ul>
+      <li>Solar → photoelectric effect</li>
+      <li>Wind → kinetic to electrical (mechanics)</li>
+      <li>Hydro → gravitational → kinetic → electric</li>
+      <li>Geothermal → heat flow & thermal conductivity</li>
+    </ul>
+    <h4>Links to Sustainable Development Goals (SDGs)</h4>
+    <p><span class="pill">SDG 7</span>Clean Energy <span class="pill">SDG 9</span>Innovation <span class="pill">SDG 13</span>Climate Action <span class="pill">SDG 12</span>Responsible Consumption</p>
+    <div class="easy"><b>Bottom line:</b> Energy physics gives us cleaner, smarter and more efficient technology — essential for a sustainable future.</div>
+  </div>
+</section>
+
+<!-- ================= UNIT 2 ================= -->
+<section id="u2">
+  <h2 class="unit-title">Unit 2 — Conventional Energy Sources</h2>
+  <p class="unit-sub">Fossil fuels · Formation · Extraction · Energy content · Combustion · Environmental impact · Nuclear energy · Reactors · Radioactive waste</p>
+
+  <div class="card">
+    <h3><span class="ico">🪨</span>1. Formation of Fossil Fuels</h3>
+    <div class="defbox">
+      <span class="word">Fossil Fuels:</span> Fuels formed from the remains of ancient plants and marine organisms buried underground for millions of years. Examples: coal, oil, natural gas.
+    </div>
+    <div class="defbox">
+      <span class="word">Fossil Fuel Formation:</span> A natural process where dead plants and microorganisms are buried under sediment, and under high pressure and temperature, transform into coal, oil or gas over millions of years.
+    </div>
+
+    <table>
+      <tr><th>Fuel</th><th>Source Material</th><th>Temperature</th><th>Process</th><th>Product</th></tr>
+      <tr><td>Coal</td><td>Land plants (peat)</td><td>50–200 °C</td><td>Compaction + carbon concentration</td><td>Bituminous / Anthracite</td></tr>
+      <tr><td>Oil</td><td>Marine micro-organisms</td><td>60–120 °C</td><td>Thermal cracking of kerogen</td><td>Liquid hydrocarbons</td></tr>
+      <tr><td>Natural Gas</td><td>Same as oil or coal</td><td>&gt;150 °C</td><td>Further cracking</td><td>Methane-rich gas</td></tr>
+    </table>
+
+    <h4>Steps of Formation</h4>
+    <ul>
+      <li><b>Raw material:</b> ancient plants, algae, marine microorganisms. Sun's energy stored by photosynthesis.</li>
+      <li><b>Burial & sedimentation:</b> sand, silt, clay pile up. Pressure ↑ and temperature ↑ with depth.</li>
+      <li><b>Geothermal gradient:</b> about <b>25–30 °C per km</b> of depth.</li>
+      <li><b>Time scale:</b> tens to hundreds of millions of years.</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Geothermal Gradient:</span> The rate at which Earth's temperature increases with depth. About 25–30 °C per km.
+    </div>
+    <div class="defbox">
+      <span class="word">Photosynthesis:</span> The process by which plants convert sunlight into chemical energy stored in organic molecules.
+    </div>
+    <div class="easy"><b>Easy way:</b> Fossil fuels are basically <b>ancient sunlight trapped in carbon bonds</b>. Heat + pressure + time cook them into coal, oil or gas.</div>
+
+    <h4>Coal Formation Stages</h4>
+    <p><b>Peat → Lignite → Bituminous → Anthracite</b></p>
+    <ul>
+      <li><b>Peat</b> — partially decayed plants (low P, low T)</li>
+      <li><b>Lignite</b> — soft brown coal (more compact)</li>
+      <li><b>Bituminous</b> — dense, black, high carbon</li>
+      <li><b>Anthracite</b> — hardest, highest carbon, extreme P & T</li>
+    </ul>
+    <p>As we move along, <b>carbon % increases</b> and <b>volatile content decreases</b>.</p>
+
+    <h4>Oil & Gas Formation</h4>
+    <ul>
+      <li><b>Kerogen stage:</b> organic matter + sediment = oil shale</li>
+      <li><b>Oil window (~60–120 °C):</b> kerogen cracks into liquid hydrocarbons</li>
+      <li><b>Gas window (&gt;150 °C):</b> oil breaks into smaller methane-rich molecules</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Kerogen:</span> A waxy organic matter found in oil shale that breaks down into oil and gas when heated.
+    </div>
+    <div class="defbox">
+      <span class="word">Thermal Cracking:</span> The process where large hydrocarbon molecules break into smaller molecules under high temperature.
+    </div>
+    <div class="defbox">
+      <span class="word">Oil Window:</span> The temperature range (60–120 °C) where kerogen breaks down into liquid hydrocarbons.
+    </div>
+    <div class="defbox">
+      <span class="word">Gas Window:</span> The temperature range (&gt;150 °C) where hydrocarbons crack into methane-rich gas.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">⛏️</span>2. Extraction Physics</h3>
+    <table>
+      <tr><th>Fuel</th><th>Extraction Method</th><th>Physics Principles</th></tr>
+      <tr><td>Coal</td><td>Surface & underground mining</td><td>Rock mechanics, leverage, gas expansion</td></tr>
+      <tr><td>Oil</td><td>Drilling, natural pressure, water/steam injection</td><td>Fluid mechanics, pressure gradients, heat transfer</td></tr>
+      <tr><td>Natural Gas</td><td>Drilling, fracking</td><td>Gas laws, fracture mechanics, pressure flow</td></tr>
+    </table>
+
+    <h4>Coal Extraction</h4>
+    <ul>
+      <li><b>Surface (open-cast) mining:</b> remove overburden to expose coal. Uses mechanical power & work-energy principle.</li>
+      <li><b>Underground mining:</b> rock mechanics (prevent collapse), ventilation physics (air flow by pressure difference), explosives (rapid gas expansion).</li>
+    </ul>
+
+    <h4>Oil Extraction</h4>
+    <ul>
+      <li><b>Drilling:</b> torque breaks rock; drilling fluid uses hydrostatic pressure to prevent blowouts.</li>
+      <li><b>Primary recovery:</b> natural reservoir pressure pushes oil up (Pascal's law, Bernoulli's principle).</li>
+      <li><b>Secondary recovery:</b> water flooding / gas injection increases pressure.</li>
+      <li><b>Enhanced Oil Recovery (EOR):</b> steam reduces viscosity; surfactants change surface tension.</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Primary Recovery:</span> Extracting oil using natural reservoir pressure without any external help.
+    </div>
+    <div class="defbox">
+      <span class="word">Secondary Recovery:</span> Injecting water or gas to increase pressure and push more oil out.
+    </div>
+    <div class="defbox">
+      <span class="word">Enhanced Oil Recovery (EOR):</span> Advanced methods like steam injection or chemicals to reduce oil viscosity and improve flow.
+    </div>
+
+    <h4>Natural Gas Extraction</h4>
+    <ul>
+      <li><b>Conventional:</b> gas is lighter, rises naturally — gas laws predict flow.</li>
+      <li><b>Unconventional (shale gas):</b> hydraulic fracturing — high-pressure fluid creates fractures (stress–strain, fracture mechanics).</li>
+      <li>Flow through rock described by <b>Darcy's law</b>.</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Hydraulic Fracturing (Fracking):</span> Using high-pressure fluid to create fractures in rock so gas can flow out.
+    </div>
+    <div class="defbox">
+      <span class="word">Darcy's Law:</span> Describes how fluid flows through porous rock — flow rate depends on pressure difference and permeability.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🔥</span>3. Energy Content of Fossil Fuels</h3>
+    <div class="defbox">
+      <span class="word">Energy Content:</span> The amount of heat energy released when a unit mass (or volume) of fuel is burned. Measured in MJ/kg or MJ/m³.
+    </div>
+    <div class="defbox">
+      <span class="word">BTU (British Thermal Unit):</span> A unit of energy. 1 BTU = 1,055 J.
+    </div>
+    <table>
+      <tr><th>Fuel</th><th>Main Components</th><th>Energy Content</th></tr>
+      <tr><td>Coal</td><td>Carbon + H, O, S</td><td>24–35 MJ/kg</td></tr>
+      <tr><td>Oil</td><td>Hydrocarbons (C₅–C₂₀)</td><td>42–47 MJ/kg</td></tr>
+      <tr><td>Natural Gas</td><td>Mostly methane (CH₄)</td><td>35–40 MJ/m³ (~55 MJ/kg)</td></tr>
+    </table>
+
+    <h4>Why Energy Content Differs</h4>
+    <ul>
+      <li><b>H:C ratio:</b> more hydrogen per carbon = more heat per kg (methane &gt; oil &gt; coal)</li>
+      <li><b>Impurities & moisture:</b> reduce usable heat (low-grade coal)</li>
+      <li><b>State of matter:</b> gases are less dense in volume but high energy per mass</li>
+    </ul>
+
+    <h4>Conversion to Electricity (Thermal → Electric)</h4>
+    <ul>
+      <li>Coal plant: <b>33–40 %</b></li>
+      <li>Oil-fired plant: <b>35–42 %</b></li>
+      <li>Gas combined cycle: <b>50–60 %</b> (highest)</li>
+    </ul>
+
+    <h4>Quick Comparison (per kg)</h4>
+    <p>Coal ~6–8 kWh/kg · Oil ~11–12 kWh/kg · Natural Gas ~14–15 kWh/kg</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🧪</span>4. Combustion & Thermodynamic Analysis</h3>
+    <div class="defbox">
+      <span class="word">Combustion:</span> A chemical reaction where a fuel reacts with oxygen to release heat energy. It is an exothermic reaction.
+    </div>
+    <p>Fossil fuels are hydrocarbons. Burning with oxygen releases heat.</p>
+    <div class="formula">C + O₂ → CO₂ + heat</div>
+    <div class="formula">2C₈H₁₈ + 25O₂ → 16CO₂ + 18H₂O + heat</div>
+    <div class="formula">CH₄ + 2O₂ → CO₂ + 2H₂O + heat</div>
+
+    <h4>Steps in Combustion</h4>
+    <ol>
+      <li><b>Ignition</b> — fuel reaches activation temperature</li>
+      <li><b>Flame propagation</b> — rapid oxidation, heat release</li>
+      <li><b>Complete combustion</b> — maximum heat, CO₂ + H₂O</li>
+      <li><b>Incomplete combustion</b> — limited O₂ gives CO, soot, less energy</li>
+    </ol>
+    <div class="defbox">
+      <span class="word">Complete Combustion:</span> Burning with enough oxygen — produces maximum heat, CO₂ and H₂O.
+    </div>
+    <div class="defbox">
+      <span class="word">Incomplete Combustion:</span> Burning with limited oxygen — produces CO (toxic), soot, and less energy.
+    </div>
+
+    <h4>Thermodynamic Analysis</h4>
+    <div class="defbox">
+      <span class="word">Heat of Combustion (Enthalpy Change, ΔH_c):</span> The amount of heat released per unit mass or mole of fuel when burned completely.
+    </div>
+    <div class="formula">ΔH_c = Σ ΔH°f(products) − Σ ΔH°f(reactants)</div>
+    <p>Coal ~24–35 MJ/kg · Oil ~42–47 MJ/kg · CH₄ ~55 MJ/kg</p>
+
+    <div class="defbox">
+      <span class="word">Enthalpy:</span> A measure of total energy in a thermodynamic system = internal energy + (pressure × volume).
+    </div>
+
+    <p><b>First Law (Energy Balance):</b></p>
+    <div class="formula">Q_in = W_out + ΔU</div>
+    <p>In power plants: boiler → steam → turbine → generator → electricity.</p>
+
+    <p><b>Second Law (Efficiency Limit):</b> Carnot efficiency</p>
+    <div class="formula">η_max = 1 − (T_c / T_h)<small>T_h = combustion gas temp (K), T_c = environment temp (K)</small></div>
+    <div class="defbox">
+      <span class="word">Carnot Efficiency:</span> The maximum theoretical efficiency of a heat engine operating between two temperatures. η = 1 − T_c/T_h.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🌫️</span>5. Environmental Impacts & Mitigation</h3>
+    <h4>Impacts</h4>
+    <ul>
+      <li><b>Air pollution:</b> CO₂ (global warming), CO (toxic), SO₂ (acid rain), NOₓ (smog, ozone depletion), particulate matter (PM)</li>
+      <li><b>Global warming:</b> CO₂ is the largest contributor; methane leaks are even more potent</li>
+      <li><b>Acid rain:</b> SO₂ + H₂O → H₂SO₄; NOₓ + H₂O → HNO₃ (damages Taj Mahal, crops, forests)</li>
+      <li><b>Health hazards:</b> PM₂.₅ & PM₁₀ cause asthma, cancer; CO poisoning</li>
+      <li><b>Ash & solid waste:</b> fly ash, bottom ash, toxic metals (Hg, Pb, As)</li>
+      <li><b>Water pollution:</b> thermal pollution, oil spills</li>
+    </ul>
+
+    <div class="defbox">
+      <span class="word">Acid Rain:</span> Rain with acidic pH caused by SO₂ and NOₓ dissolving in water vapour to form sulfuric and nitric acids.
+    </div>
+    <div class="defbox">
+      <span class="word">Particulate Matter (PM):</span> Tiny solid particles (soot, ash) suspended in air that can enter lungs and cause health problems.
+    </div>
+
+    <h4>Mitigation Measures</h4>
+    <ul>
+      <li><b>FGD</b> (Flue Gas Desulfurization) — removes SO₂ using limestone slurry → gypsum</li>
+      <li><b>SCR</b> (Selective Catalytic Reduction) — converts NOₓ into N₂ + H₂O</li>
+      <li><b>ESP & bag filters</b> — trap ash and particulates</li>
+      <li><b>CCS</b> (Carbon Capture & Storage) — captures CO₂, stores underground</li>
+      <li><b>Cleaner fuels</b> — low-sulfur coal, shift coal → natural gas, promote biofuels & hydrogen</li>
+      <li><b>Policy</b> — Euro VI / Bharat Stage norms, carbon tax, Paris Agreement</li>
+      <li><b>Afforestation</b> — trees absorb CO₂ (carbon sinks)</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Flue Gas Desulfurization (FGD):</span> A technology that removes SO₂ from exhaust gases using limestone slurry, producing gypsum as a byproduct.
+    </div>
+    <div class="defbox">
+      <span class="word">Carbon Capture and Storage (CCS):</span> Capturing CO₂ from power plants and storing it underground so it doesn't enter the atmosphere.
+    </div>
+    <div class="defbox">
+      <span class="word">Carbon Sink:</span> Anything that absorbs more CO₂ than it releases — like forests and oceans.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">⚛️</span>6. Nuclear Energy — Fission & Fusion</h3>
+    <div class="defbox">
+      <span class="word">Nuclear Energy:</span> Energy stored in the nucleus of an atom — the energy that holds the nucleus together.
+    </div>
+    <div class="defbox">
+      <span class="word">Binding Energy:</span> The energy required to break a nucleus into its individual protons and neutrons. Higher binding energy per nucleon = more stable atom.
+    </div>
+    <p>The greater the binding energy per nucleon, the more stable the atom. Iron-56 (⁵⁶Fe) is the most stable.</p>
+    <div class="easy"><b>Graph idea:</b> Light nuclei release energy by <b>fusion</b> (joining). Heavy nuclei release energy by <b>fission</b> (splitting). Both move towards iron.</div>
+
+    <h4>Fusion</h4>
+    <div class="defbox">
+      <span class="word">Nuclear Fusion:</span> Light nuclei join together to form a heavier nucleus, releasing a huge amount of energy.
+    </div>
+    <div class="formula">²₁D + ³₁T → ⁴₂He + ¹₀n + 17.6 MeV</div>
+    <p>Other reactions: D + D → ³He + n + 3.7 MeV; D + D → T + H + 4.03 MeV; D + ³He → ⁴He + H + 18.3 MeV</p>
+
+    <h4>Fusion Energy Calculation (Mass Deficit)</h4>
+    <div class="defbox">
+      <span class="word">Mass Deficit (Δm):</span> The difference between the total mass before and after a nuclear reaction. This "missing" mass is converted into energy.
+    </div>
+    <div class="formula">E = mc²</div>
+    <p>For D + T: Δm = 0.0187 m_H, m_H = 1.6727 × 10⁻²⁷ kg</p>
+    <p>E = 2.8184 × 10⁻¹² J = <b>17.56 MeV</b> (since 1 eV = 1.6022 × 10⁻¹⁹ J)</p>
+
+    <h4>Fission</h4>
+    <div class="defbox">
+      <span class="word">Nuclear Fission:</span> A heavy nucleus splits into two smaller nuclei, releasing energy and neutrons.
+    </div>
+    <div class="formula">U-235 + neutron → Kr-90 + Ba-144 + energy + neutrons</div>
+    <p>Released neutrons can trigger more fission → <b>chain reaction</b>.</p>
+    <div class="defbox">
+      <span class="word">Chain Reaction:</span> A self-sustaining series of nuclear fissions where each fission releases neutrons that cause more fissions.
+    </div>
+    <div class="example"><b>Example:</b> 1 kg of uranium releases about a million times more energy than 1 kg of coal.</div>
+
+    <h4>Worldwide Nuclear Power</h4>
+    <ul>
+      <li>~20 % of world's electricity, ~7 % of total energy</li>
+      <li>440 reactors in 31 countries; 30 more under construction</li>
+      <li>Zero CO₂ or smog emissions</li>
+      <li>Top: United States (103 reactors), France (59), Japan (53)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🏭</span>7. Reactor Physics — Types & Design</h3>
+
+    <h4>Pressurized Water Reactor (PWR)</h4>
+    <div class="defbox">
+      <span class="word">Pressurized Water Reactor (PWR):</span> A nuclear reactor where water under high pressure transfers heat from the reactor core to a secondary loop, where steam is generated to produce electricity.
+    </div>
+    <ul>
+      <li><b>Reactor core:</b> fuel rods produce heat by fission. Water kept at very high pressure (~155 bar) so it doesn't boil even at ~320 °C.</li>
+      <li><b>Steam generator:</b> heat transferred to a secondary loop; the two loops never mix → no radioactive contamination outside core.</li>
+      <li><b>Turbine & generator:</b> steam spins turbine → electricity.</li>
+      <li><b>Condenser & cooling:</b> third loop (river/sea/cooling tower) removes heat.</li>
+      <li>Control rods control fission rate; water acts as moderator & coolant.</li>
+    </ul>
+
+    <h4>Boiling Water Reactor (BWR)</h4>
+    <div class="defbox">
+      <span class="word">Boiling Water Reactor (BWR):</span> A nuclear reactor where water in the core is allowed to boil directly, and the steam goes straight to the turbine.
+    </div>
+    <ul>
+      <li>No separate steam generator needed.</li>
+      <li>Steam goes straight to the turbine → generator.</li>
+      <li>Steam is slightly radioactive, so turbines are shielded.</li>
+      <li>Lower pressure (~70 bar), simpler design.</li>
+    </ul>
+
+    <table>
+      <tr><th>Feature</th><th>BWR</th><th>PWR</th></tr>
+      <tr><td>Steam generation</td><td>Boils directly in reactor vessel</td><td>Separate steam generator</td></tr>
+      <tr><td>Loops</td><td>Single loop</td><td>Two loops (primary & secondary)</td></tr>
+      <tr><td>Pressure</td><td>Lower (~70 bar)</td><td>Higher (~155 bar)</td></tr>
+      <tr><td>Turbine contact</td><td>Steam radioactive → turbines radioactive</td><td>Turbines never touch radioactive water</td></tr>
+      <tr><td>Complexity</td><td>Simpler</td><td>More complex</td></tr>
+    </table>
+
+    <h4>Fast Breeder Reactor (FBR)</h4>
+    <div class="defbox">
+      <span class="word">Fast Breeder Reactor (FBR):</span> A nuclear reactor that uses fast neutrons and produces ("breeds") more fuel than it consumes — e.g. converts U-238 into Pu-239.
+    </div>
+    <ul>
+      <li>Uses fast neutrons (no moderator needed)</li>
+      <li>Produces more fuel than it consumes</li>
+      <li>Uses liquid metal coolant (sodium)</li>
+    </ul>
+
+    <h4>Neutron Moderation</h4>
+    <div class="defbox">
+      <span class="word">Neutron Moderation:</span> The process of slowing down fast neutrons so they can efficiently cause fission in U-235. Water, heavy water, or graphite act as moderators.
+    </div>
+    <div class="defbox">
+      <span class="word">Moderator:</span> A material (like water or graphite) that slows down neutrons without absorbing them.
+    </div>
+
+    <h4>Criticality</h4>
+    <div class="defbox">
+      <span class="word">Criticality:</span> The state of a nuclear reactor when the chain reaction is steady and self-sustaining. Governed by k_eff.
+    </div>
+    <div class="defbox">
+      <span class="word">Neutron Multiplication Factor (k_eff):</span> The ratio of neutrons in one generation to the previous generation.
+    </div>
+    <ul>
+      <li><b>Subcritical (k &lt; 1):</b> neutron population decreases, chain reaction dies</li>
+      <li><b>Critical (k = 1):</b> steady, self-sustaining — normal power operation</li>
+      <li><b>Supercritical (k &gt; 1):</b> neutron population increases, reaction accelerates</li>
+    </ul>
+    <div class="easy"><b>Easy way:</b> k is like a "population growth rate" for neutrons. Reactors are kept exactly at k = 1 for stable power.</div>
+
+    <h4>Reactor Design Components</h4>
+    <ul>
+      <li><b>Fuel rods:</b> contain uranium (U-235)</li>
+      <li><b>Control rods:</b> absorb neutrons to control reaction rate (boron, cadmium)</li>
+      <li><b>Moderator:</b> slows neutrons (water, graphite)</li>
+      <li><b>Coolant:</b> carries heat away (water, liquid sodium)</li>
+      <li><b>Shielding:</b> protects from radiation (concrete, lead)</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Control Rods:</span> Rods made of neutron-absorbing material (boron, cadmium) inserted or withdrawn to control the fission rate.
+    </div>
+    <div class="defbox">
+      <span class="word">Coolant:</span> A fluid (water, liquid sodium) that carries heat away from the reactor core.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">☢️</span>8. Radioactive Waste Management</h3>
+    <div class="defbox">
+      <span class="word">Radioactive Waste:</span> Waste containing radioactive materials that are unstable and decay into other elements, emitting radiation.
+    </div>
+    <div class="defbox">
+      <span class="word">Transuranic Elements:</span> Chemical elements with atomic number greater than 92 (uranium). They are unstable and decay slowly.
+    </div>
+
+    <h4>Types of Waste</h4>
+    <table>
+      <tr><th>Type</th><th>% Volume</th><th>% Radioactivity</th><th>Details</th></tr>
+      <tr><td>Low-Level (LLW)</td><td>90 %</td><td>1 %</td><td>Paper, rags, tools, clothing; short-lived; little shielding</td></tr>
+      <tr><td>Intermediate (ILW)</td><td>7 %</td><td>4 %</td><td>Resins, sludges, metal cladding; needs shielding</td></tr>
+      <tr><td>High-Level (HLW)</td><td>3 %</td><td>95 %</td><td>Used fuel; heat-generating; deep disposal</td></tr>
+      <tr><td>Transuranic</td><td>1.2 %</td><td>—</td><td>Alpha emitters, atomic no. &gt; 92; long-term isolation</td></tr>
+    </table>
+
+    <div class="defbox">
+      <span class="word">Low-Level Waste (LLW):</span> Waste with small amounts of mostly short-lived radioactivity — paper, rags, tools, clothing.
+    </div>
+    <div class="defbox">
+      <span class="word">Intermediate-Level Waste (ILW):</span> Waste with higher radioactivity that requires shielding — resins, chemical sludges, metal fuel cladding.
+    </div>
+    <div class="defbox">
+      <span class="word">High-Level Waste (HLW):</span> Highly radioactive waste that generates heat and requires cooling and deep geological disposal — used fuel and separated waste.
+    </div>
+
+    <h4>Disposal Methods</h4>
+    <ul>
+      <li><b>Near-surface disposal:</b> for LLW — concrete vaults, trenches</li>
+      <li><b>Deep geological disposal:</b> for ILW & HLW — 300–500 m deep, stable rock, glass-encased</li>
+      <li><b>Sub-seabed disposal:</b> deep ocean floor sediment, 5 miles depth</li>
+      <li><b>Island disposal:</b> deep stable formations on islands; ocean acts as barrier</li>
+      <li><b>Ice sheet disposal:</b> waste placed in polar ice, melts its way down</li>
+      <li><b>Space disposal:</b> send waste to deep solar orbit (theoretical)</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Deep Geological Disposal:</span> Burying high-level radioactive waste 300–500 m deep in stable rock formations to isolate it for thousands of years.
+    </div>
+  </div>
+</section>
+
+<!-- ================= UNIT 3 ================= -->
+<section id="u3">
+  <h2 class="unit-title">Unit 3 — Solar Energy</h2>
+  <p class="unit-sub">Solar radiation · Solar constant · Photovoltaic effect · Solar thermal collectors & storage · Efficiency & losses</p>
+
+  <div class="card">
+    <h3><span class="ico">☀️</span>1. Basics of Solar Radiation</h3>
+    <div class="defbox">
+      <span class="word">Solar Radiation:</span> Electromagnetic radiation emitted by the Sun due to nuclear fusion in its core. It behaves like a blackbody at ~5778 K.
+    </div>
+    <div class="defbox">
+      <span class="word">Blackbody Radiation:</span> Radiation emitted by an ideal object that absorbs and emits all wavelengths. The Sun behaves like a blackbody at 5778 K.
+    </div>
+
+    <h4>Spectrum Distribution</h4>
+    <ul>
+      <li><b>Ultraviolet (UV):</b> ~7 % (wavelength &lt; 400 nm)</li>
+      <li><b>Visible light:</b> ~47 % (400–700 nm) — useful for vision & photosynthesis</li>
+      <li><b>Infrared (IR):</b> ~46 % (700–2500 nm) — responsible for heating</li>
+    </ul>
+
+    <h4>Intensity</h4>
+    <div class="defbox">
+      <span class="word">Solar Intensity:</span> The power per unit area received from the Sun. At Earth's surface, clear noon ≈ 1000 W/m².
+    </div>
+    <p>It varies with:</p>
+    <ul>
+      <li>Atmospheric absorption & scattering (clouds, gases, aerosols)</li>
+      <li>Time of day (solar angle)</li>
+      <li>Latitude and season</li>
+    </ul>
+    <p>Global average ≈ 170–200 W/m².</p>
+
+    <h4>Solar Constant</h4>
+    <div class="defbox">
+      <span class="word">Solar Constant (S):</span> The average amount of solar electromagnetic radiation received per unit area at the top of Earth's atmosphere, on a surface perpendicular to the Sun's rays. S = 1361 W/m².
+    </div>
+    <p>Varies slightly (±0.1 %) with the 11-year solar cycle and ±3 % due to Earth's orbital eccentricity.</p>
+
+    <h4>Fate of Incoming Solar Radiation</h4>
+    <ul>
+      <li>~30 % reflected back to space (<b>albedo</b> — clouds, ice, atmosphere)</li>
+      <li>~20 % absorbed by the atmosphere</li>
+      <li>~50 % absorbed by Earth's surface (land & oceans)</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Albedo:</span> The fraction of incoming solar radiation reflected back to space by a surface. Earth's average albedo ≈ 30 %.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🔆</span>2. Photovoltaic Effect & Solar Cells</h3>
+    <div class="defbox">
+      <span class="word">Photovoltaic Effect:</span> The process where light (photons) hits a semiconductor and knocks electrons free, creating an electric current.
+    </div>
+    <div class="defbox">
+      <span class="word">Solar Cell (PV Cell):</span> A device that converts sunlight directly into electricity using the photovoltaic effect.
+    </div>
+    <div class="defbox">
+      <span class="word">p-n Junction:</span> The boundary between p-type and n-type semiconductors where an electric field is created, allowing electrons to flow.
+    </div>
+
+    <h4>How a Solar Cell Works</h4>
+    <ol>
+      <li><b>n-type material</b> (extra electrons) and <b>p-type material</b> (extra holes) are joined.</li>
+      <li>The junction creates a built-in electric field.</li>
+      <li>Sunlight hits the cell → photons transfer energy to electrons.</li>
+      <li>Electrons flow through the external circuit → <b>electric current</b>.</li>
+      <li>Holes move in the opposite direction.</li>
+    </ol>
+    <div class="example"><b>Example:</b> A solar panel on a rooftop — photons in, electrons out, DC electricity produced. An inverter converts it to AC for home use.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">♨️</span>3. Solar Heat Collection</h3>
+    <div class="defbox">
+      <span class="word">Solar Collector:</span> A device that collects and/or concentrates solar radiation to produce heat.
+    </div>
+
+    <h4>Flat-Plate Collectors</h4>
+    <div class="defbox">
+      <span class="word">Flat-Plate Collector:</span> An insulated box with a transparent cover and absorber plate that heats water/air up to ~100 °C. Common in domestic water heating.
+    </div>
+
+    <h4>Evacuated Tube Collectors</h4>
+    <div class="defbox">
+      <span class="word">Evacuated Tube Collector:</span> Glass tubes with vacuum insulation that reduce heat loss, achieving higher temperatures (~150 °C). Useful in colder regions.
+    </div>
+
+    <h4>Concentrating Collectors (CSP)</h4>
+    <div class="defbox">
+      <span class="word">Concentrating Collector (CSP):</span> Mirrors/lenses concentrate sunlight onto a receiver, reaching 300–1000 °C. Used for large-scale power generation.
+    </div>
+    <div class="defbox">
+      <span class="word">CSP (Concentrated Solar Power):</span> A technology that uses mirrors or lenses to concentrate sunlight to generate heat, which drives a turbine to produce electricity.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🔋</span>4. Solar Heat Storage</h3>
+    <table>
+      <tr><th>Type</th><th>Mechanism</th><th>Energy Density</th></tr>
+      <tr><td>Sensible Heat</td><td>Temperature rise of a material (water, oil, rocks, molten salt)</td><td>~200–500 kJ/kg</td></tr>
+      <tr><td>Latent Heat</td><td>Phase change materials (paraffin wax, salts) absorb/release heat during melting/solidification</td><td>~100–200 kJ/kg (nitrates); ~1000 kJ/kg (metals)</td></tr>
+      <tr><td>Thermochemical</td><td>Heat stored through reversible chemical reactions</td><td>~300–6000 kJ/kg</td></tr>
+    </table>
+    <div class="defbox">
+      <span class="word">Sensible Heat Storage:</span> Heat stored by raising the temperature of a material (water, oil, rocks, molten salt).
+    </div>
+    <div class="defbox">
+      <span class="word">Latent Heat Storage:</span> Heat stored/released when a material changes phase (melting/solidification) using phase change materials (PCMs).
+    </div>
+    <div class="defbox">
+      <span class="word">Thermochemical Storage:</span> Heat stored through reversible chemical reactions, giving the highest energy density and longest storage duration.
+    </div>
+    <div class="easy"><b>Easy way:</b> Sensible = "just heat it up". Latent = "melt it". Thermochemical = "react it".</div>
+    <div class="example"><b>Example:</b> Molten salt storage in CSP plants stores heat during the day and generates electricity at night.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🏠</span>5. Applications of Solar Thermal Energy</h3>
+    <ul>
+      <li><b>Domestic & Commercial:</b> solar water heating (homes, hotels, hospitals), space heating & cooling, solar cookers, dryers, greenhouses</li>
+      <li><b>Industrial:</b> process heat for food, textile, chemical, pharma; solar desalination; solar furnaces</li>
+      <li><b>Power Generation:</b> CSP plants generate steam to drive turbines; hybrid systems</li>
+      <li><b>Agriculture:</b> solar dryers for crops, greenhouses, solar pumps for irrigation</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Solar Desalination:</span> Using solar energy to remove salt from seawater to produce fresh water.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">📉</span>6. Efficiency & Losses</h3>
+    <div class="defbox">
+      <span class="word">Solar PV Efficiency:</span> The ratio of electrical output power to incident solar power. Typical: 15–25 %.
+    </div>
+    <div class="formula">η_PV = (P_out / P_in) × 100 %</div>
+    <div class="defbox">
+      <span class="word">Solar Thermal Efficiency:</span> The ratio of useful heat energy collected to incident solar radiation. Flat plate: 30–70 %; Concentrating: 40–60 %.
+    </div>
+    <div class="formula">η_thermal = (Q_useful / (A × G)) × 100 %<small>Q = heat gained, A = collector area, G = solar irradiance</small></div>
+
+    <h4>Losses in Solar PV</h4>
+    <ul>
+      <li>Reflection losses (~4–10 %)</li>
+      <li>Spectral losses — photons below bandgap wasted</li>
+      <li>Thermalization losses — high-energy photons lose excess as heat</li>
+      <li>Series resistance losses</li>
+      <li>Shading & dust</li>
+      <li>Temperature losses</li>
+      <li>Mismatch losses between cells/panels</li>
+    </ul>
+
+    <h4>Losses in Solar Thermal</h4>
+    <ul>
+      <li><b>Optical:</b> reflection/transmission, tracking errors in CSP</li>
+      <li><b>Thermal:</b> conduction, convection, radiation from absorber</li>
+      <li><b>Storage & transport:</b> heat loss in pipes/tanks, insulation issues</li>
+      <li><b>Mechanical:</b> pumping power, parasitic loads (fans, motors)</li>
+    </ul>
+
+    <h4>Improving Efficiency</h4>
+    <ul>
+      <li><b>PV:</b> anti-reflective coatings, tracking systems, MPPT, cooling & cleaning</li>
+      <li><b>Thermal:</b> selective coatings (high absorptivity, low emissivity), vacuum insulation, good thermal storage</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">MPPT (Maximum Power Point Tracking):</span> A technique used in solar inverters to extract maximum possible power from PV panels.
+    </div>
+  </div>
+</section>
+
+<!-- ================= UNIT 4 ================= -->
+<section id="u4">
+  <h2 class="unit-title">Unit 4 — Wind and Hydropower</h2>
+  <p class="unit-sub">Wind kinetic energy · Betz's limit · Wind turbine design · Hydropower · Impulse & reaction turbines · Small vs large hydro · Case studies</p>
+
+  <div class="card">
+    <h3><span class="ico">💨</span>1. Kinetic Energy of Wind</h3>
+    <div class="defbox">
+      <span class="word">Wind Energy:</span> Energy obtained from the movement of air caused by pressure differences in the atmosphere (mainly due to solar heating).
+    </div>
+    <div class="formula">E_k = ½ v²<small>Kinetic energy per unit mass of moving air</small></div>
+    <div class="formula">P_wind = ½ ρ A v³<small>ρ = air density (~1.225 kg/m³), A = swept area, v = wind speed</small></div>
+    <div class="easy"><b>Key point:</b> Power depends on the <b>cube</b> of wind speed. Double the wind speed → <b>8 times</b> the power. Small speed changes matter a lot!</div>
+    <div class="example"><b>Example:</b> Wind at 5 m/s gives 125 units; at 10 m/s gives 1000 units — 8× more power.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🚧</span>2. Betz's Limit</h3>
+    <div class="defbox">
+      <span class="word">Betz's Limit:</span> The maximum theoretical fraction of wind power that can be extracted by an ideal turbine. It is 59.3 % (16/27).
+    </div>
+    <div class="formula">C_p,max = 16/27 ≈ 0.593</div>
+    <div class="formula">P_max = (16/27) × ½ ρ A v³</div>
+    <p>You cannot extract all the wind's energy — if you did, the air behind the turbine would stop and no new wind could flow in.</p>
+    <p>Modern turbines achieve about <b>40–50 %</b>, close to the theoretical limit.</p>
+    <div class="defbox">
+      <span class="word">Power Coefficient (C_p):</span> The fraction of wind power that a turbine can extract. Maximum theoretical value = 0.593 (Betz limit).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🌀</span>3. Wind Turbine Design & Working</h3>
+    <div class="defbox">
+      <span class="word">Wind Turbine:</span> A device that converts the kinetic energy of wind into electrical energy.
+    </div>
+
+    <h4>Main Components</h4>
+    <ul>
+      <li><b>Rotor blades</b> — 2–3 long blades shaped like airplane wings (airfoils)</li>
+      <li><b>Hub</b> — connects blades to the main shaft</li>
+      <li><b>Nacelle</b> — housing with main shaft, gearbox, generator, brake system</li>
+      <li><b>Yaw mechanism</b> — rotates turbine to face the wind</li>
+      <li><b>Tower</b> — elevates turbine to stronger, more consistent winds</li>
+      <li><b>Control system</b> — monitors wind speed, pitch angle, performance</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Nacelle:</span> The housing on top of the tower that contains the gearbox, generator, and brake system.
+    </div>
+    <div class="defbox">
+      <span class="word">Yaw Mechanism:</span> A system that rotates the turbine to face the wind direction.
+    </div>
+
+    <h4>Working Principle</h4>
+    <ol>
+      <li>Wind blows across rotor blades → pressure difference → blades rotate (aerodynamic lift & drag)</li>
+      <li>Rotor spins the low-speed shaft</li>
+      <li>Gearbox increases speed (e.g. 20 rpm → 1500 rpm)</li>
+      <li>High-speed shaft drives the generator → electricity</li>
+      <li>Power electronics & transformer send it to the grid</li>
+    </ol>
+    <div class="formula">P_Turbine = C_p × ½ ρ A v³</div>
+
+    <h4>Types of Wind Turbines</h4>
+    <div class="defbox">
+      <span class="word">HAWT (Horizontal Axis Wind Turbine):</span> A wind turbine with blades rotating around a horizontal axis. Most common modern design.
+    </div>
+    <div class="defbox">
+      <span class="word">VAWT (Vertical Axis Wind Turbine):</span> A wind turbine with blades rotating around a vertical axis. Examples: Savonius, Darrieus.
+    </div>
+
+    <h4>Power Curve (important)</h4>
+    <ul>
+      <li><b>Cut-in speed:</b> below this, no power generation</li>
+      <li><b>Rated wind speed:</b> turbine reaches maximum output</li>
+      <li><b>Cut-out speed:</b> turbine stops to avoid damage</li>
+    </ul>
+    <div class="defbox">
+      <span class="word">Cut-in Speed:</span> The minimum wind speed at which a turbine starts generating power.
+    </div>
+    <div class="defbox">
+      <span class="word">Cut-out Speed:</span> The maximum wind speed at which a turbine stops to prevent damage.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">💧</span>4. Energy of Water (Hydropower)</h3>
+    <div class="defbox">
+      <span class="word">Hydropower:</span> Electricity generated by converting the potential and kinetic energy of flowing or falling water into electrical energy.
+    </div>
+
+    <h4>Potential Energy</h4>
+    <div class="formula">PE = m g h<small>m = mass, g = 9.8 m/s², h = height of water level</small></div>
+    <div class="defbox">
+      <span class="word">Gravitational Potential Energy:</span> Energy stored in water due to its height above the turbine. PE = mgh.
+    </div>
+
+    <h4>Kinetic Energy</h4>
+    <div class="formula">KE = ½ m v²</div>
+    <div class="defbox">
+      <span class="word">Kinetic Energy of Water:</span> Energy of moving water. When water falls, potential energy converts to kinetic energy. KE = ½mv².
+    </div>
+
+    <div class="easy"><b>Chain:</b> Potential energy → Kinetic energy → Mechanical energy → Electrical energy</div>
+
+    <h4>Power Generation</h4>
+    <div class="formula">P = η ρ g Q H<small>η = efficiency (85–95 %), ρ = 1000 kg/m³, Q = flow rate (m³/s), H = effective head (m)</small></div>
+    <div class="defbox">
+      <span class="word">Effective Head (H):</span> The net vertical height of water available to produce power at the turbine.
+    </div>
+    <p>The turbine shaft is coupled to a generator, which converts mechanical energy → electrical energy using electromagnetic induction.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">⚙️</span>5. Turbines in Hydropower</h3>
+    <div class="defbox">
+      <span class="word">Turbine:</span> A machine that converts the kinetic and/or pressure energy of a fluid (water or steam) into mechanical energy (rotation).
+    </div>
+
+    <h4>Impulse Turbines</h4>
+    <div class="defbox">
+      <span class="word">Impulse Turbine:</span> A turbine where high-velocity jets of water strike the blades. Pressure stays constant; only velocity changes. Based on Newton's Second Law.
+    </div>
+    <ul>
+      <li>High-velocity jets of water are directed at turbine blades (buckets/cups)</li>
+      <li>Kinetic energy of the jet strikes blades → rotation</li>
+      <li>Pressure of the fluid stays <b>constant</b>; only velocity changes</li>
+      <li>Based on <b>Newton's Second Law</b> (rate of change of momentum = force)</li>
+      <li>Example: Pelton wheel</li>
+    </ul>
+
+    <h4>Reaction Turbines</h4>
+    <div class="defbox">
+      <span class="word">Reaction Turbine:</span> A turbine that uses both velocity and pressure of the fluid to turn blades. Fully submerged. Based on Newton's Third Law.
+    </div>
+    <ul>
+      <li>Uses <b>both velocity and pressure</b> of the fluid to turn blades</li>
+      <li>Based on <b>Newton's Third Law</b></li>
+      <li>The entire blade system is <b>submerged</b> in water</li>
+      <li>~60–70 % of turbines worldwide are reaction type</li>
+      <li>Examples: Francis turbine, Kaplan turbine</li>
+    </ul>
+
+    <table>
+      <tr><th>Feature</th><th>Impulse Turbine</th><th>Reaction Turbine</th></tr>
+      <tr><td>Pressure</td><td>Constant</td><td>Changes across blades</td></tr>
+      <tr><td>Blade position</td><td>In air (not submerged)</td><td>Submerged in water</td></tr>
+      <tr><td>Law used</td><td>Newton's 2nd Law</td><td>Newton's 3rd Law</td></tr>
+      <tr><td>Example</td><td>Pelton wheel</td><td>Francis, Kaplan</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🏞️</span>6. Small-Scale vs Large-Scale Hydro</h3>
+    <div class="defbox">
+      <span class="word">Small-Scale Hydro:</span> Hydropower projects up to 10–25 MW, usually run-of-river type, used for local/rural supply.
+    </div>
+    <div class="defbox">
+      <span class="word">Large-Scale Hydro:</span> Hydropower projects greater than 25 MW, usually storage-based with large dams, used for national grid supply.
+    </div>
+    <div class="defbox">
+      <span class="word">Run-of-River Scheme:</span> A hydropower design that uses the natural flow of a river without building a large dam or reservoir.
+    </div>
+
+    <table>
+      <tr><th>Feature</th><th>Small-Scale Hydro</th><th>Large-Scale Hydro</th></tr>
+      <tr><td>Capacity</td><td>Up to 10–25 MW</td><td>25 MW to several 1000 MW</td></tr>
+      <tr><td>Purpose</td><td>Local/rural supply, small industries, irrigation</td><td>National grid, flood control, irrigation, water supply</td></tr>
+      <tr><td>Plant type</td><td>Run-of-river (no large dam)</td><td>Storage-based with large dams</td></tr>
+      <tr><td>Construction</td><td>Simple, low cost, fast</td><td>High cost, long time, big infrastructure</td></tr>
+      <tr><td>Environmental impact</td><td>Minimal</td><td>Significant (displacement, submergence)</td></tr>
+      <tr><td>Examples</td><td>Micro-hydro (&lt;100 kW), Mini (100 kW–1 MW), Small (1–10 MW)</td><td>Three Gorges (22,500 MW), Bhakra Nangal (1325 MW), Itaipu (14,000 MW)</td></tr>
+    </table>
+
+    <h4>Case Study 1 — Darjeeling–Rangit Valley Small Hydro (West Bengal)</h4>
+    <ul>
+      <li><b>Location:</b> Darjeeling District, West Bengal</li>
+      <li><b>Type:</b> Small hydropower (run-of-river scheme)</li>
+      <li><b>Capacity:</b> ~5 MW</li>
+      <li><b>River:</b> Rangit (tributary of Teesta)</li>
+      <li><b>Developer:</b> WBREDA · <b>Turbine:</b> Francis (medium head 50–100 m)</li>
+      <li><b>Benefits:</b> electricity to remote villages, tea gardens, schools; local employment; reduced diesel use; minimal ecological disturbance; low carbon footprint</li>
+    </ul>
+
+    <h4>Case Study 2 — Tehri Hydropower Project (Uttarakhand)</h4>
+    <ul>
+      <li><b>Location:</b> Tehri Garhwal, Uttarakhand · <b>River:</b> Bhagirathi</li>
+      <li><b>Capacity:</b> 2400 MW (Tehri Stage-I: 1000 MW; Koteshwar: 400 MW; Pumped Storage: 1000 MW)</li>
+      <li><b>Dam:</b> Rock-fill embankment, 260.5 m high (one of Asia's highest)</li>
+      <li><b>Multi-purpose:</b> power, irrigation (~270,000 hectares), drinking water to Delhi, UP, Uttarakhand</li>
+      <li><b>Technology:</b> Francis turbines, high head</li>
+      <li><b>Issues:</b> displacement of 100+ villages, loss of forests & biodiversity, seismic zone concerns, submergence of heritage sites, local opposition</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ALL DEFINITIONS ================= -->
+<section id="defs">
+  <h2 class="unit-title">📖 All Definitions — 1 Mark Ready</h2>
+  <p class="unit-sub">Every important definition from Units 1–4 in one place. Perfect for 1-mark questions.</p>
+
+  <div class="card">
+    <h3><span class="ico">⚡</span>Unit 1 — Energy Basics</h3>
+    <div class="defbox"><span class="word">Energy:</span> The ability or power to do work.</div>
+    <div class="defbox"><span class="word">Potential Energy:</span> Stored energy or energy of position.</div>
+    <div class="defbox"><span class="word">Kinetic Energy:</span> Energy of motion.</div>
+    <div class="defbox"><span class="word">Chemical Energy:</span> Energy stored in the bonds of atoms and molecules.</div>
+    <div class="defbox"><span class="word">Nuclear Energy:</span> Energy stored in the nucleus of an atom.</div>
+    <div class="defbox"><span class="word">Gravitational Energy:</span> Energy of place or position — water in a dam.</div>
+    <div class="defbox"><span class="word">Radiant Energy:</span> Electromagnetic energy travelling in transverse waves (sunlight).</div>
+    <div class="defbox"><span class="word">Thermal Energy:</span> Internal energy in substances — vibration of atoms and molecules.</div>
+    <div class="defbox"><span class="word">Electrical Energy:</span> Energy from the movement of electrons.</div>
+    <div class="defbox"><span class="word">Zeroth Law:</span> If two systems are each in thermal equilibrium with a third, they are in equilibrium with each other.</div>
+    <div class="defbox"><span class="word">First Law of Thermodynamics:</span> Energy cannot be created or destroyed; ΔU = Q − W.</div>
+    <div class="defbox"><span class="word">Second Law of Thermodynamics:</span> Heat flows naturally from hot to cold; entropy of an isolated system always increases.</div>
+    <div class="defbox"><span class="word">Entropy:</span> A measure of disorder or randomness in a system.</div>
+    <div class="defbox"><span class="word">Third Law of Thermodynamics:</span> Entropy of a perfect crystal at absolute zero is zero.</div>
+    <div class="defbox"><span class="word">Absolute Zero:</span> 0 K = −273.15 °C — the lowest possible temperature.</div>
+    <div class="defbox"><span class="word">Work:</span> Done when a force moves an object through a distance.</div>
+    <div class="defbox"><span class="word">Heat:</span> Energy transferred due to a temperature difference.</div>
+    <div class="defbox"><span class="word">Power:</span> The rate at which work is done or energy is transferred. P = W/t.</div>
+    <div class="defbox"><span class="word">Efficiency (η):</span> Ratio of useful work output to total energy input.</div>
+    <div class="defbox"><span class="word">Carnot Efficiency:</span> Maximum theoretical efficiency η = 1 − T_c/T_h.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">🪨</span>Unit 2 — Conventional Energy</h3>
+    <div class="defbox"><span class="word">Fossil Fuels:</span> Fuels formed from ancient plants and organisms buried for millions of years.</div>
+    <div class="defbox"><span class="word">Geothermal Gradient:</span> Rate of temperature increase with depth (~25–30 °C/km).</div>
+    <div class="defbox"><span class="word">Peat:</span> Partially decayed plant matter — first stage of coal formation.</div>
+    <div class="defbox"><span class="word">Lignite:</span> Soft brown coal — second stage.</div>
+    <div class="defbox"><span class="word">Bituminous Coal:</span> Dense, black, high-carbon coal.</div>
+    <div class="defbox"><span class="word">Anthracite:</span> Hardest, highest-carbon coal formed under extreme pressure & temperature.</div>
+    <div class="defbox"><span class="word">Kerogen:</span> Waxy organic matter in oil shale that breaks down into oil and gas.</div>
+    <div class="defbox"><span class="word">Oil Window:</span> Temperature range 60–120 °C where kerogen forms liquid hydrocarbons.</div>
+    <div class="defbox"><span class="word">Gas Window:</span> Temperature &gt;150 °C where hydrocarbons crack into methane-rich gas.</div>
+    <div class="defbox"><span class="word">Thermal Cracking:</span> Breaking large hydrocarbon molecules into smaller ones using heat.</div>
+    <div class="defbox"><span class="word">Primary Recovery:</span> Extracting oil using natural reservoir pressure.</div>
+    <div class="defbox"><span class="word">Secondary Recovery:</span> Injecting water/gas to increase pressure and push oil out.</div>
+    <div class="defbox"><span class="word">Enhanced Oil Recovery (EOR):</span> Advanced methods (steam, chemicals) to improve oil flow.</div>
+    <div class="defbox"><span class="word">Hydraulic Fracturing:</span> Using high-pressure fluid to create fractures in rock for gas extraction.</div>
+    <div class="defbox"><span class="word">Energy Content:</span> Heat released when a unit mass/volume of fuel is burned (MJ/kg or MJ/m³).</div>
+    <div class="defbox"><span class="word">BTU:</span> British Thermal Unit — 1 BTU = 1,055 J.</div>
+    <div class="defbox"><span class="word">Combustion:</span> Chemical reaction of fuel with oxygen releasing heat.</div>
+    <div class="defbox"><span class="word">Complete Combustion:</span> Burning with enough oxygen — produces CO₂ + H₂O + maximum heat.</div>
+    <div class="defbox"><span class="word">Incomplete Combustion:</span> Burning with limited oxygen — produces CO, soot, less energy.</div>
+    <div class="defbox"><span class="word">Heat of Combustion (ΔH_c):</span> Heat released per unit mass/mole of fuel burned completely.</div>
+    <div class="defbox"><span class="word">Enthalpy:</span> Total energy of a system = internal energy + (pressure × volume).</div>
+    <div class="defbox"><span class="word">Acid Rain:</span> Rain with acidic pH caused by SO₂ and NOₓ.</div>
+    <div class="defbox"><span class="word">Particulate Matter (PM):</span> Tiny solid particles in air that can enter lungs.</div>
+    <div class="defbox"><span class="word">FGD (Flue Gas Desulfurization):</span> Removes SO₂ using limestone slurry → gypsum.</div>
+    <div class="defbox"><span class="word">SCR (Selective Catalytic Reduction):</span> Converts NOₓ into N₂ + H₂O using ammonia/urea.</div>
+    <div class="defbox"><span class="word">CCS (Carbon Capture & Storage):</span> Captures CO₂ and stores it underground.</div>
+    <div class="defbox"><span class="word">Carbon Sink:</span> Anything that absorbs more CO₂ than it releases (forests, oceans).</div>
+    <div class="defbox"><span class="word">Nuclear Fission:</span> Heavy nucleus splits into two smaller nuclei + energy.</div>
+    <div class="defbox"><span class="word">Nuclear Fusion:</span> Light nuclei join to form a heavier nucleus + energy.</div>
+    <div class="defbox"><span class="word">Binding Energy:</span> Energy required to break a nucleus into protons and neutrons.</div>
+    <div class="defbox"><span class="word">Mass Deficit (Δm):</span> Difference between mass before and after a nuclear reaction — converted to energy.</div>
+    <div class="defbox"><span class="word">Chain Reaction:</span> Self-sustaining series of fissions where neutrons cause more fissions.</div>
+    <div class="defbox"><span class="word">PWR:</span> Pressurized Water Reactor — water under high pressure transfers heat to a secondary loop.</div>
+    <div class="defbox"><span class="word">BWR:</span> Boiling Water Reactor — water boils directly in the reactor vessel.</div>
+    <div class="defbox"><span class="word">FBR:</span> Fast Breeder Reactor — uses fast neutrons, produces more fuel than it consumes.</div>
+    <div class="defbox"><span class="word">Neutron Moderation:</span> Slowing down fast neutrons so they can cause fission in U-235.</div>
+    <div class="defbox"><span class="word">Moderator:</span> Material (water, graphite) that slows neutrons without absorbing them.</div>
+    <div class="defbox"><span class="word">Criticality:</span> State when chain reaction is steady and self-sustaining (k_eff = 1).</div>
+    <div class="defbox"><span class="word">Neutron Multiplication Factor (k_eff):</span> Ratio of neutrons in one generation to the previous.</div>
+    <div class="defbox"><span class="word">Control Rods:</span> Neutron-absorbing rods (boron, cadmium) that control fission rate.</div>
+    <div class="defbox"><span class="word">Coolant:</span> Fluid that carries heat away from the reactor core.</div>
+    <div class="defbox"><span class="word">Radioactive Waste:</span> Waste containing unstable radioactive materials.</div>
+    <div class="defbox"><span class="word">Transuranic Elements:</span> Elements with atomic number &gt; 92.</div>
+    <div class="defbox"><span class="word">LLW:</span> Low-Level Waste — 90% volume, 1% radioactivity.</div>
+    <div class="defbox"><span class="word">ILW:</span> Intermediate-Level Waste — 7% volume, 4% radioactivity.</div>
+    <div class="defbox"><span class="word">HLW:</span> High-Level Waste — 3% volume, 95% radioactivity.</div>
+    <div class="defbox"><span class="word">Deep Geological Disposal:</span> Burying HLW 300–500 m deep in stable rock.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">☀️</span>Unit 3 — Solar Energy</h3>
+    <div class="defbox"><span class="word">Solar Radiation:</span> Electromagnetic radiation emitted by the Sun due to nuclear fusion.</div>
+    <div class="defbox"><span class="word">Blackbody Radiation:</span> Radiation from an ideal object that absorbs and emits all wavelengths.</div>
+    <div class="defbox"><span class="word">Solar Intensity:</span> Power per unit area received from the Sun. Peak ≈ 1000 W/m².</div>
+    <div class="defbox"><span class="word">Solar Constant (S):</span> Average solar radiation at top of atmosphere = 1361 W/m².</div>
+    <div class="defbox"><span class="word">Albedo:</span> Fraction of incoming solar radiation reflected back to space (~30% for Earth).</div>
+    <div class="defbox"><span class="word">Photovoltaic Effect:</span> Light hits semiconductor → knocks electrons free → electric current.</div>
+    <div class="defbox"><span class="word">Solar Cell:</span> Device that converts sunlight directly into electricity.</div>
+    <div class="defbox"><span class="word">p-n Junction:</span> Boundary between p-type and n-type semiconductors creating an electric field.</div>
+    <div class="defbox"><span class="word">Solar Collector:</span> Device that collects/concentrates solar radiation to produce heat.</div>
+    <div class="defbox"><span class="word">Flat-Plate Collector:</span> Insulated box with transparent cover and absorber plate — heats water/air up to 100 °C.</div>
+    <div class="defbox"><span class="word">Evacuated Tube Collector:</span> Glass tubes with vacuum insulation — achieves ~150 °C.</div>
+    <div class="defbox"><span class="word">Concentrating Collector (CSP):</span> Mirrors/lenses concentrate sunlight — reaches 300–1000 °C.</div>
+    <div class="defbox"><span class="word">Sensible Heat Storage:</span> Heat stored by raising temperature of a material.</div>
+    <div class="defbox"><span class="word">Latent Heat Storage:</span> Heat stored/released during phase change (melting/solidification).</div>
+    <div class="defbox"><span class="word">Thermochemical Storage:</span> Heat stored through reversible chemical reactions.</div>
+    <div class="defbox"><span class="word">Solar PV Efficiency:</span> Electrical output ÷ incident solar power. Typical 15–25 %.</div>
+    <div class="defbox"><span class="word">Solar Thermal Efficiency:</span> Useful heat collected ÷ incident solar radiation.</div>
+    <div class="defbox"><span class="word">MPPT:</span> Maximum Power Point Tracking — technique to extract maximum power from PV panels.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">💨</span>Unit 4 — Wind & Hydropower</h3>
+    <div class="defbox"><span class="word">Wind Energy:</span> Energy from the movement of air caused by pressure differences.</div>
+    <div class="defbox"><span class="word">Betz's Limit:</span> Maximum theoretical wind power extraction = 59.3 % (16/27).</div>
+    <div class="defbox"><span class="word">Power Coefficient (C_p):</span> Fraction of wind power a turbine can extract. Max = 0.593.</div>
+    <div class="defbox"><span class="word">Wind Turbine:</span> Device that converts kinetic energy of wind into electrical energy.</div>
+    <div class="defbox"><span class="word">Nacelle:</span> Housing on top of tower containing gearbox, generator, brake.</div>
+    <div class="defbox"><span class="word">Yaw Mechanism:</span> Rotates turbine to face the wind direction.</div>
+    <div class="defbox"><span class="word">HAWT:</span> Horizontal Axis Wind Turbine — blades rotate around horizontal axis.</div>
+    <div class="defbox"><span class="word">VAWT:</span> Vertical Axis Wind Turbine — blades rotate around vertical axis.</div>
+    <div class="defbox"><span class="word">Cut-in Speed:</span> Minimum wind speed for power generation.</div>
+    <div class="defbox"><span class="word">Cut-out Speed:</span> Maximum wind speed before turbine stops for safety.</div>
+    <div class="defbox"><span class="word">Hydropower:</span> Electricity from potential and kinetic energy of water.</div>
+    <div class="defbox"><span class="word">Gravitational Potential Energy:</span> Energy stored in water due to height. PE = mgh.</div>
+    <div class="defbox"><span class="word">Kinetic Energy of Water:</span> Energy of moving water. KE = ½mv².</div>
+    <div class="defbox"><span class="word">Effective Head (H):</span> Net vertical height of water available at the turbine.</div>
+    <div class="defbox"><span class="word">Turbine:</span> Machine converting fluid energy into mechanical energy.</div>
+    <div class="defbox"><span class="word">Impulse Turbine:</span> High-velocity jets strike blades; pressure constant; Newton's 2nd Law.</div>
+    <div class="defbox"><span class="word">Reaction Turbine:</span> Uses velocity and pressure; fully submerged; Newton's 3rd Law.</div>
+    <div class="defbox"><span class="word">Small-Scale Hydro:</span> Up to 10–25 MW, run-of-river, local supply.</div>
+    <div class="defbox"><span class="word">Large-Scale Hydro:</span> &gt;25 MW, storage-based with large dams, national grid.</div>
+    <div class="defbox"><span class="word">Run-of-River Scheme:</span> Hydropower using natural river flow without large dam.</div>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz">
+  <h2 class="unit-title">🎯 Practice MCQs — 1 Mark Each</h2>
+  <p class="unit-sub">Q1 is compulsory (8 marks). From Q2–Q6, attempt any THREE (4 marks each). Total 20 marks.</p>
+
+  <div class="card">
+    <h3><span class="ico">📝</span>Quick Revision — One-Liners</h3>
+    <ul>
+      <li>Energy = ability to do work; can't be created or destroyed.</li>
+      <li>1st Law: ΔU = Q − W · 2nd Law: entropy always increases · 3rd Law: S = 0 at 0 K.</li>
+      <li>Carnot efficiency: η = 1 − T_c/T_h.</li>
+      <li>Fossil fuels = ancient sunlight stored in carbon bonds.</li>
+      <li>Coal: Peat → Lignite → Bituminous → Anthracite (carbon ↑).</li>
+      <li>Oil window: 60–120 °C · Gas window: &gt;150 °C.</li>
+      <li>Energy content: Coal 24–35, Oil 42–47, Gas 35–40 MJ/kg (or /m³).</li>
+      <li>Nuclear: E = mc² · D+T fusion gives 17.6 MeV.</li>
+      <li>PWR: two loops, ~155 bar · BWR: single loop, ~70 bar.</li>
+      <li>Criticality: k&lt;1 subcritical, k=1 critical, k&gt;1 supercritical.</li>
+      <li>Solar constant = 1361 W/m² · PV efficiency 15–25 %.</li>
+      <li>Betz limit = 16/27 ≈ 59.3 % · Wind power ∝ v³.</li>
+      <li>Hydro power: P = ηρgQH · Impulse = constant pressure, Reaction = pressure changes.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="ico">❓</span>Try These (click an option)</h3>
+
+    <div class="qbox" data-a="1">
+      <div class="q">1. The maximum theoretical efficiency of a wind turbine is about:</div>
+      <button class="opt">25 %</button>
+      <button class="opt">59.3 %</button>
+      <button class="opt">75 %</button>
+      <button class="opt">100 %</button>
+    </div>
+
+    <div class="qbox" data-a="1">
+      <div class="q">2. In which temperature range does the "oil window" occur?</div>
+      <button class="opt">20–50 °C</button>
+      <button class="opt">60–120 °C</button>
+      <button class="opt">150–200 °C</button>
+      <button class="opt">250–300 °C</button>
+    </div>
+
+    <div class="qbox" data-a="0">
+      <div class="q">3. The First Law of Thermodynamics is basically the law of:</div>
+      <button class="opt">Conservation of energy</button>
+      <button class="opt">Increasing entropy</button>
+      <button class="opt">Absolute zero</button>
+      <button class="opt">Heat transfer</button>
+    </div>
+
+    <div class="qbox" data-a="2">
+      <div class="q">4. Which reactor type allows water to boil directly inside the reactor vessel?</div>
+      <button class="opt">PWR</button>
+      <button class="opt">FBR</button>
+      <button class="opt">BWR</button>
+      <button class="opt">None of these</button>
+    </div>
+
+    <div class="qbox" data-a="1">
+      <div class="q">5. Wind power available is proportional to:</div>
+      <button class="opt">v</button>
+      <button class="opt">v³</button>
+      <button class="opt">v²</button>
+      <button class="opt">1/v</button>
+    </div>
+
+    <div class="qbox" data-a="3">
+      <div class="q">6. The solar constant at the top of Earth's atmosphere is about:</div>
+      <button class="opt">100 W/m²</button>
+      <button class="opt">500 W/m²</button>
+      <button class="opt">1000 W/m²</button>
+      <button class="opt">1361 W/m²</button>
+    </div>
+
+    <div class="qbox" data-a="0">
+      <div class="q">7. Which turbine uses Newton's Third Law and is fully submerged?</div>
+      <button class="opt">Reaction turbine</button>
+      <button class="opt">Impulse turbine</button>
+      <button class="opt">Pelton wheel</button>
+      <button class="opt">Gas turbine</button>
+    </div>
+
+    <div class="qbox" data-a="2">
+      <div class="q">8. For a steady self-sustaining chain reaction, k_eff must be:</div>
+      <button class="opt">Less than 1</button>
+      <button class="opt">Greater than 1</button>
+      <button class="opt">Equal to 1</button>
+      <button class="opt">Zero</button>
+    </div>
+
+    <div class="qbox" data-a="1">
+      <div class="q">9. Entropy of an isolated system in a natural process:</div>
+      <button class="opt">Always decreases</button>
+      <button class="opt">Always increases or stays same</button>
+      <button class="opt">Remains zero</button>
+      <button class="opt">Becomes negative</button>
+    </div>
+
+    <div class="qbox" data-a="0">
+      <div class="q">10. The solar constant is measured at:</div>
+      <button class="opt">Top of Earth's atmosphere</button>
+      <button class="opt">Earth's surface at noon</button>
+      <button class="opt">Equator only</button>
+      <button class="opt">Sea level</button>
+    </div>
+
+    <div class="qbox" data-a="3">
+      <div class="q">11. Which stage of coal has the highest carbon content?</div>
+      <button class="opt">Peat</button>
+      <button class="opt">Lignite</button>
+      <button class="opt">Bituminous</button>
+      <button class="opt">Anthracite</button>
+    </div>
+
+    <div class="qbox" data-a="2">
+      <div class="q">12. In a PWR, the pressure of the primary loop is about:</div>
+      <button class="opt">1 bar</button>
+      <button class="opt">70 bar</button>
+      <button class="opt">155 bar</button>
+      <button class="opt">500 bar</button>
+    </div>
+
+    <div class="qbox" data-a="0">
+      <div class="q">13. The photovoltaic effect converts:</div>
+      <button class="opt">Light → Electricity</button>
+      <button class="opt">Heat → Electricity</button>
+      <button class="opt">Wind → Electricity</button>
+      <button class="opt">Chemical → Electricity</button>
+    </div>
+
+    <div class="qbox" data-a="1">
+      <div class="q">14. The energy content of natural gas is approximately:</div>
+      <button class="opt">24–35 MJ/kg</button>
+      <button class="opt">35–40 MJ/m³</button>
+      <button class="opt">42–47 MJ/kg</button>
+      <button class="opt">55–60 MJ/kg</button>
+    </div>
+
+    <div class="qbox" data-a="3">
+      <div class="q">15. Which law states that entropy of a perfect crystal at 0 K is zero?</div>
+      <button class="opt">Zeroth Law</button>
+      <button class="opt">First Law</button>
+      <button class="opt">Second Law</button>
+      <button class="opt">Third Law</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Energy Physics · Easy Notes + Definitions (Unit 1–4) · Made for quick revision & 1-mark prep ✨
+</footer>
+
+<script>
+  // Tabs
+  const buttons = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main section');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('show'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.t).classList.add('show');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+
+  // Quiz
+  document.querySelectorAll('.qbox').forEach(box => {
+    const correct = parseInt(box.dataset.a);
+    const opts = box.querySelectorAll('.opt');
+    opts.forEach((opt, i) => {
+      opt.addEventListener('click', () => {
+        opts.forEach(o => o.disabled = true);
+        opts[correct].classList.add('correct');
+        if (i !== correct) opt.classList.add('wrong');
+      });
+    });
+  });
+</script>
+</body>
+</html>
